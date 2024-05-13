@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-pod
+spec:
+ containers:
+  - name: flask-pod
+    image: saniyashaikh/flaskapp
+    env:
+      - name: MYSQL_HOST
+        value: "mysql-svc"                # mysql's service cluster IP
+      - name: MYSQL_USER
+        value: "admin"
+      - name: MYSQL_PASSWORD
+        value: "admin"
+      - name: MYSQL_DB
+        value: "mydb"
+    ports:
+     - containerPort: 5000
+    imagePullPolicy: Always

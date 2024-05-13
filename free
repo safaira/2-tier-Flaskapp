@@ -1,0 +1,17 @@
+deployment.yaml
+   volume:
+      name: {{ .values.volumeMounts.name }}
+      mountPath: {{ .values.volumeMounts.mountPath }}
+volumeMounts:
+    name: {{.values.volumes.name }}
+    ConfigMap:
+      data: {{ .values.volume.ConfigMap.data.init.sq }}
+values.yaml
+   volume:
+      name: mysql-initdb
+   ConfigMap: 
+      data: mysql-initdb-config   # configmap metadata name
+
+volumeMounts:
+   name: mysql-initdb
+   mountPath: docker-entrypoint-initdb.d 
